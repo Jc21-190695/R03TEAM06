@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/kaimono")
 public class kaimonolist extends HttpServlet {
@@ -24,17 +25,21 @@ public class kaimonolist extends HttpServlet {
 		final String pass = "webapp";
 
 		try {
+			HttpSession session = request.getSession();
+			String userid = (String)session.getAttribute("userid");
+			
 			Class.forName(driverName);
 			Connection connection=DriverManager.getConnection(url,id,pass);
 			PreparedStatement st =
 					connection.prepareStatement(
-							"select * from comm_table where sort_id=1 and add_id=2"
+							"select * from comm_table where sort_id=1 and add_id=2 and user_id=?"
 						);
-			
+			st.setString(1, userid);
 			PreparedStatement at =
 					connection.prepareStatement(
-							"select * from comm_table where sort_id=2 and add_id=2"
+							"select * from comm_table where sort_id=2 and add_id=2 and user_id=?"
 						);
+			at.setString(1, userid);
 			
 			ResultSet result1 = st.executeQuery();
 			ResultSet result2 = at.executeQuery();

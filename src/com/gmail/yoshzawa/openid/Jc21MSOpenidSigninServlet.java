@@ -36,7 +36,7 @@ public final class Jc21MSOpenidSigninServlet extends HttpServlet {
 
 	private String getDevelopLoginUrl() {
 		String url = null;
-		String AzureAppIdLocal = "a93c6516-b7b3-407e-b7ca-2dbc3d55e8c0";
+		String AzureAppIdLocal = "d4da0c84-8f9e-400c-bbcb-fa6dcc59bbfd";
 		if (AzureAppIdLocal != null) {
 			url = "https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize";
 			url += "?client_id=" + AzureAppIdLocal;

@@ -18,4 +18,3 @@
  
   	head.appendChild(linkElement);
 	}
-	

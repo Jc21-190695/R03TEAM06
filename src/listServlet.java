@@ -6,13 +6,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 @WebServlet("/list")
+
 public class listServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -24,25 +29,66 @@ public class listServlet extends HttpServlet {
 		final String pass = "webapp";
 
 		try {
+			//↓↓セッション取得　emailをとってくる↓↓
+			
+			HttpSession session = request.getSession();
+			String email = (String)session.getAttribute("email");
+			System.out.println(email);
+			InitialContext ic = new InitialContext();
+			DataSource ds = (DataSource)ic.lookup(
+					"java:/comp/env/jdbc/webapp");
+			Connection con = ds.getConnection();
+			PreparedStatement st = con.prepareStatement(
+					"insert ignore into user_table values(null,2,?)");
+			st.setString(1,  email);
+			st.executeUpdate();
+			st.close();
+
+			//↑↑メールアドレスをデータベースに追加↑↑
+			
+			//↓↓自分のメールアドレスのidを取得↓↓
+			
+
+			
+			PreparedStatement st20 = con.prepareStatement(
+					"select user_id from user_table where mail_address=?");
+			
+			st20.setString(1, email);
+
+			ResultSet result10 = st20.executeQuery();
+			result10.next();
+			String userid = result10.getString("user_id");
+			System.out.println(userid);
+
+			st20.close();
+			
+			session.setAttribute("userid", userid);
+			
 			Class.forName(driverName);
 			Connection connection=DriverManager.getConnection(url,id,pass);
 			PreparedStatement st1 =
 					connection.prepareStatement(
-							"select * from comm_table where sort_id=1 and add_id=1"
+							"select * from comm_table where sort_id=1 and add_id=1 and user_id=?"
 						);
+			st1.setString(1, userid);
 			PreparedStatement st2 =
 					connection.prepareStatement(
-							"select * from comm_table where sort_id=1 and add_id=2"
+							"select * from comm_table where sort_id=1 and add_id=2 and user_id=?"
 						);
-			
+			st2.setString(1, userid);
 			PreparedStatement at1 =
 					connection.prepareStatement(
-							"select * from comm_table where sort_id=2 and add_id=1"
+							"select * from comm_table where sort_id=2 and add_id=1 and user_id=?"
 						);
+			at1.setString(1, userid);
 			PreparedStatement at2 =
 					connection.prepareStatement(
-							"select * from comm_table where sort_id=2 and add_id=2"
+							"select * from comm_table where sort_id=2 and add_id=2 and user_id=?"
 						);
+			at2.setString(1, userid);
+			
+
+			
 			
 			ResultSet result1 = st1.executeQuery();
 			ResultSet result2 = st2.executeQuery();
@@ -96,7 +142,7 @@ public class listServlet extends HttpServlet {
 
 				list4.add(s);
 			}
-			
+
 			request.setAttribute("list1",list1);
 			request.setAttribute("list2",list2);
 			request.setAttribute("list3",list3);
@@ -104,10 +150,14 @@ public class listServlet extends HttpServlet {
 			request.getRequestDispatcher("/list.jsp")
 			.forward(request,response);
 			
-		} catch (ClassNotFoundException e ) {
+			con.close();
+		/*} catch (ClassNotFoundException e ) {
 			e.printStackTrace();
 		} catch (SQLException e ) {
 			e.printStackTrace();
-		}
+		}*/
+		} catch (Exception e) {
+			e.printStackTrace();
+	}
 	}
 }

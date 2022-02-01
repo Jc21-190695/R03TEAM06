@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
@@ -38,7 +39,9 @@ public class Tuika extends HttpServlet {
 			String comm = request.getParameter("comm");
 			String count = request.getParameter("count");
 			
-			Part part=request.getPart("file");
+			HttpSession session = request.getSession();
+			String userid = (String)session.getAttribute("userid");
+			/*Part part=request.getPart("file");
 			//ファイル名を取得
 			//String filename=part.getSubmittedFileName();//ie対応が不要な場合
 			String filename=Paths.get(part.getSubmittedFileName()).getFileName().toString();
@@ -47,18 +50,19 @@ public class Tuika extends HttpServlet {
 			PreparedStatement at = con.prepareStatement(
 					"insert into file_table values(?)");
 			
-			at.setString(1,"filename");
+			at.setString(1,"filename");*/
 			
 			PreparedStatement st = con.prepareStatement(
-					"insert into comm_table values(null,1,?,?,?,?)");
+					"insert into comm_table values(null,?,?,?,1,?)");
 			
+			st.setString(1, userid);
 			if(comm.equals("niti")) {
-				st.setInt(1,  1);	
+				st.setInt(2,  1);	
 			}else {
-				st.setInt(1,  2);	
+				st.setInt(2,  2);	
 			}
-			st.setString(2,  name);
-			st.setInt(3, 1);
+			
+			st.setString(3,  name);
 			st.setString(4,count);
 			
 			

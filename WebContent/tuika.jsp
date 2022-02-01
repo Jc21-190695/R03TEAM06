@@ -3,10 +3,11 @@
 <!doctype html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width,intial-scale=1.0">
+
 <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
-<script src="henkou.js"></script>
 <script src="tuika.js"></script>
+<script src="henkou.js"></script>
+
 </head>
 <body>
 
@@ -19,11 +20,11 @@
 			<ul class="nav_menu_ul">
 				<li class="nav_menu_li"><a href="http://localhost:8080/R03Team06/list">リスト画面</a></li>
 				<li class="nav_menu_li"><a href="http://localhost:8080/R03Team06/kaimono">買い物画面</a></li>
-				<li class="nav_menu_li"><a href="#">BLOG</a></li>
-				<li class="nav_menu_li"><a href="#">CONTACT</a></li>
+				<li class="nav_menu_li"><a href="http://localhost:8080/R03Team06/settei.html">設定画面</a></li>
 			</ul>
 		</nav>
 	</div>
+
 	<script>
 	    $('.nav_toggle').on('click', function () {
 	        $('.nav_toggle, .nav').toggleClass('show');
@@ -33,6 +34,7 @@
 
 	<div class="content">
 		<form method="post" action="tuika">
+		
 			<%--↓画像はじめ↓ --%>
 			<div id="gazouwaku">
 				<script type="text/javascript">
@@ -55,7 +57,7 @@
 						// ファイルの読み込み(Data URI Schemeの取得)
 						filereader.readAsDataURL(file);
 					}
-					
+				
 				</script>
 				<label class="upload-label">
 					<div class="font">ファイルを選択</div>
@@ -63,35 +65,35 @@
 				</label>
 				<ul id="ID001"></ul>
 			</div>
-			<%--↑画像終わり↑--%>
-
+			<%--↑画像終わり↑--%>			
 			<div class="font">
 				<label for="name">名前</label>
-				<input type="text" name="name"	maxlength="10" style="width: 650px; height: 150px;">
-				<br><br> 
-				<input type="text" value="0" id="textbox" name="count"style="width: 650px; height: 150px;">
+				<input type="text" name="name"	maxlength="10"   class="pcHako mbHako mar">
+				<br><br>
+				<input type="text" value="0" id="textbox" name="count"class="pcHako mbHako mar">
 				<br> <br>
 				<div class="sentaku">
-				<label><input class="radio" type="radio" name="comm"value="syoku" style="transform: scale(3.0)">食材 </label>&emsp; 
-				 <label><input class="radio" type="radio" name="comm" value="niti"style="transform: scale(3.0)">日用品 </label>
-				 <br> <br>
+					<label><input class="radio" type="radio" name="comm"value="syoku">食材 </label>&emsp; 
+					<label><input class="radio" type="radio" name="comm" value="niti">日用品 </label>
+					<br> <br>
 				</div>
 			</div>
 			<br>
-			<button type="submit" style="width: 250px; height: 150px;">
+			<button type="submit" class="tubo" >
 				<div class="font">追加</div>
 			</button>
+			
 		</form>
 
 		<%--プラス,マイナス,リセットボタン --%>
-		<div class="updown">
-			<button class="button " id="down"style="width: 150px; height: 150px;">
+		<div class="updown ">
+			<button class="button zoge" id="down">
 				<div class="font">－</div>
 			</button>
-			<button class="button " id="up" style="width: 150px; height: 150px;">
+			<button class="button zoge" id="up" >
 				<div class="font">＋</div>
 			</button>
-			<button class="button resetbtn " id="reset"style="width: 300px; height: 150px;">
+			<button class="button resetbtn rese" id="reset">
 				<div class="font">RESET</div>
 			</button>
 		</div>

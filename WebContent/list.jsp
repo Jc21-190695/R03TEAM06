@@ -48,29 +48,31 @@ if(optList4.isPresent()){
 
 <form method="post" action="add">
 <table class="table">
-  <thead> 
-   <th> 
-    <div class="title">結果</div>
-   </th>
-  </thead>
+
   <tbody>
-     <th>
+     
     <div class="title">食品</div>
     <br>
-    <div class="title">名前</div>
-    </th>
     
+    <td><div class="title hyou">名前</div></td>
+    <td><div class="title hyou">状態</div></td>
+    <td></td>
+    <td><div class="title hyou">個数</div></td>
+    
+
    
   <% for (String[] s : list1){ %>
     <tr>
-    <% String commid = s[0]; %>
-    
+       
     <td><div class="list"><%=s[1] %></div></td>
 	<td><button class="button" type="submit"value=<%=s[0]%> name="comm" ><div class="font">購入する</div></button></td>
-	
-	<td><button class="button" type="button" id="down"><div class="font">－</div></button></td>
-	<td><input class="count" type="text" value=<%=s[3] %> id="textbox" name="count"></td>
-	<td><button class="button" type="button" id="up" ><div class="font">＋</div></button></td>
+	 <% String down = "down"+s[0]; %>
+	 <% String text = "text"+s[0]; %>
+	 <% String up = "up"+s[0]; %>
+	 <td><a class="btn btn-border"id="<%=down %>" type="button"><span><div class="plmy">－</div></span></a></td>
+	<td><input class="count" type="text" value=<%=s[3] %> id="<%=text%>" name="count"></td>
+	<td><a class="btn btn-border"id="<%=up %>" type="button"><span><div class="plmy">＋</div></span></a></td>	
+		<td><button class="button" type="submit" formaction="count" value=<%=s[3] %>,<%=s[3] %> name="countbutton" ><div class="font">変更</div></button></td>
 
 
     </tr>
@@ -81,32 +83,36 @@ if(optList4.isPresent()){
     
     <td><div class="kaimono"><%=s[1] %></div></td>
 	<td><div class="font2">登録済み</div></td>
-	<td><button class="button" type="button" id="down"><div class="font">－</div></button></td>
-	<td><input class="count" type="text" value=<%=s[3] %> id="textbox" name="count"></td>
-	<td><button class="button" type="button" id="up" ><div class="font">＋</div></button></td>
-			
-
-
-
+	 <% String down = "down"+s[0]; %>
+	 <% String text = "text"+s[0]; %>
+	 <% String up = "up"+s[0]; %>
+	 <td><a class="btn btn-border"id="<%=down %>" type="button"><span><div class="plmy">－</div></span></a></td>
+	<td><input class="count" type="text" value=<%=s[3] %> id="<%=text%>" name="count"></td>
+	<td><a class="btn btn-border"id="<%=up %>" type="button"><span><div class="plmy">＋</div></span></a></td>	
     </tr>
     <%} %>
-
-    <th>
-    
+    </table>
+<table class="table">
+	
     <div class="title">日用品</div>
-   
     <br>
-    <div class="title">名前</div>
-    </th>
+    
+    <td><div class="title hyou">名前</div></td>
+    <td><div class="title hyou">状態</div></td>
+    <td></td>
+    <td><div class="title hyou">個数</div></td>>
+    
   <% for (String[] s : list3){ %>
     <tr>
-    <% String commid = s[0]; %>
     
     <td><div class="list"><%=s[1] %></div></td>
 	<td><button class="button" type="submit"value=<%=s[0]%> name="comm" ><div class="font">購入する</div></button></td>
-	<td><button class="button" type="button" id="down"><div class="font">－</div></button></td>
-	<td><input class="count" type="text" value=<%=s[3] %> id="textbox" name="count"></td>
-	<td><button class="button" type="button" id="up" ><div class="font">＋</div></button></td>
+	 <% String down = "down"+s[0]; %>
+	 <% String text = "text"+s[0]; %>
+	 <% String up = "up"+s[0]; %>
+	 <td><a class="btn btn-border"id="<%=down %>" type="button"><span><div class="plmy">－</div></span></a></td>
+	<td><input class="count" type="text" value=<%=s[3] %> id="<%=text%>" name="count"></td>
+	<td><a class="btn btn-border"id="<%=up %>" type="button"><span><div class="plmy">＋</div></span></a></td>	
 
 
     </tr>
@@ -117,9 +123,12 @@ if(optList4.isPresent()){
     
     <td><div class="kaimono"><%=s[1] %></div></td>
 	<td><div class="font2">登録済み</div></td>
-	<td><button class="button" type="button" id="down"><div class="font">－</div></button></td>
-	<td><input class="count" type="text" value=<%=s[3] %> id="textbox" name="count"></td>
-	<td><button class="button" type="button" id="up" ><div class="font">＋</div></button></td>
+	 <% String down = "down"+s[0]; %>
+	 <% String text = "text"+s[0]; %>
+	 <% String up = "up"+s[0]; %>
+	 <td><a class="btn btn-border"id="<%=down %>" type="button"><span><div class="plmy">－</div></span></a></td>
+	<td><input class="count" type="text" value=<%=s[3] %> id="<%=text%>" name="count"></td>
+	<td><a class="btn btn-border"id="<%=up %>" type="button"><span><div class="plmy">＋</div></span></a></td>	
 
 
     </tr>
@@ -127,6 +136,7 @@ if(optList4.isPresent()){
     
   </tbody>
 </table>
+
 </form>
 
 

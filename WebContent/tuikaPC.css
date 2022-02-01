@@ -1,4 +1,43 @@
 @charset "UTF-8";
+
+.content {
+	text-align: center;
+}
+/*画像37-64*/
+#gazouwaku {
+	height: 350px;
+	margin-top: 100px;
+	margin-bottom: 25px;
+}
+.upload-label {
+	display: inline-block;
+	cursor: pointer; /* カーソルを指に */
+	margin: 1em 0; /* まわりの余白 */
+	padding: .7em 1em; /* 文字まわりの余白 */
+	line-height: 1.4; /* 行間 */
+	background: #3e8bff; /* 背景色 */
+	color: #FFF; /* 文字色 */
+	font-size: 0.95em; /* フォントサイズ */
+	border-radius: 2.5em; /* 角の丸み */
+	transition: 0.2s; /* ホバーをなめらかに */
+}
+.upload-label input {
+	display: none;
+}
+.sizex {
+	width: auto;
+	height:250px;
+}
+.updown {
+	position: relative;
+    top:100px;
+	left: 0px;
+	margin-top: -210px;
+}
+.sentaku{
+	position:relative;
+	top:20px;
+}
 /*ハンバーガー14-26*/
 .nav_toggle {
 	display: block;
@@ -59,10 +98,6 @@
 	opacity: 1;
 	visibility: visible;
 }
-
-/*画像37-64*/
-
-
 
 /*増減ボタン86-96*/
 

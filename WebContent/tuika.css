@@ -3,7 +3,10 @@
 .content {
 	text-align: center;
 }
-
+.mbHako{
+	width: 650px;
+	height: 150px;
+}
 input {
 	font-size: 75%;
 	text-align: center;
@@ -14,15 +17,21 @@ input {
 }
 
 .radio {
-	top: -20px;
+	top: -10px;
 	left: -20px;
 	position: relative;
+	width:50px;
+	height:50px;
 }
-
+.mar{
+	margin-top:20px;
+	margin-bottom:20px
+}
 #gazouwaku {
 	height: 500px;
 	margin-top: 100px;
-	margin-bottom: 250px;
+	margin-left:70px;
+	margin-bottom: 200px;
 }
 
 .updown {
@@ -31,14 +40,26 @@ input {
 	left: 0px;
 	margin-top: -500px;
 }
-
+.zoge{
+	width: 150px; 
+	height: 150px;
+}
+.rese{
+	width: 300px; 
+	height: 150px;
+}
+.tubo{
+	width: 250px; 
+	height: 150px;
+}
 
 .sentaku {
 	margin-top: 150px;
 }
 
 .sizex {
-	width: 450px;
+	width: auto;
+	height:450px;
 }
 
 .upload-label {
@@ -53,7 +74,6 @@ input {
 	border-radius: 2.5em; /* 角の丸み */
 	transition: 0.2s; /* ホバーをなめらかに */
 }
-
 .upload-label input {
 	display: none;
 }
@@ -70,7 +90,6 @@ input {
 	width: 1.75rem;
 	height: 1.5rem;
 }
-
 .nav_toggle i {
 	display: block;
 	width: 100%;

@@ -81,7 +81,7 @@ public final class Jc21MSRedirectServlet extends HttpServlet {
 		session.setAttribute("email", email);
 
 		resp.getWriter().println("<H1>Welcome," + email + "</h1>");
-		resp.getWriter().println("<a href='/index'>Continue</a>");
+		resp.getWriter().println("<a href= http://localhost:8080/R03Team06/list >Continue</a>");
 
 	}
 }

@@ -13,41 +13,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-//データベース追加用サーブレット
 
-@WebServlet("/add")
+@WebServlet("/count")
 
-public class add extends HttpServlet {
+public class CountServlet extends HttpServlet {
 	
 	public void doPost(
 			HttpServletRequest request, HttpServletResponse response
 		) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("utf-8");
+
 		PrintWriter out = response.getWriter();
+		
 		try {
 			InitialContext ic = new InitialContext();
 			DataSource ds = (DataSource)ic.lookup(
 					"java:/comp/env/jdbc/webapp");
 			Connection con = ds.getConnection();
-			int comm = Integer.parseInt( request.getParameter("comm"));
-			
+			String count = request.getParameter("countbutton");
+			System.out.println(count);
 			PreparedStatement st = con.prepareStatement(
-					"update comm_table set add_id=2 where comm_id=?");
-			st.setInt(1, comm);
+					"update comm_table set count=? where comm_id=?");
 			
-			//int count = Integer.parseInt( request.getParameter("count"));
-			//System.out.println(count);
+			st.setString(1, count);
+			st.setInt(2, 2);
+			
 			st.executeUpdate();
+			
+			
 			st.close();
 			con.close();
-			response.sendRedirect("http://localhost:8080/R03Team06/list");
-
 			} catch (Exception e) {
 				out.println("<pre>");
 				e.printStackTrace(out);
 			}
-		
 	}
-	
+						
 }
+	

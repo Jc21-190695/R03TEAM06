@@ -32,11 +32,7 @@ if(optList2.isPresent()){
 
 <form method="post" action="delete">
 <table class="table">
-  <thead> 
-    <th>
-    <div class="title">結果</div>
-    </th>
-  </thead>
+
   <tbody>
      <th>
    <div class="title"> 食品</div>
