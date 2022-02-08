@@ -33,7 +33,7 @@
 	<%--↑↑↑↑↑↑↑↑↑ --%>
 
 	<div class="content">
-		<form method="post" action="tuika">
+		<form method="post" action="tuika" enctype="multipart/form-data">
 		
 			<%--↓画像はじめ↓ --%>
 			<div id="gazouwaku">

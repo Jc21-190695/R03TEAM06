@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-
+//商品の個数を変更　未完成
 @WebServlet("/count")
 
 public class CountServlet extends HttpServlet {
@@ -31,19 +31,22 @@ public class CountServlet extends HttpServlet {
 			DataSource ds = (DataSource)ic.lookup(
 					"java:/comp/env/jdbc/webapp");
 			Connection con = ds.getConnection();
-			String count = request.getParameter("countbutton");
-			System.out.println(count);
+			String count = request.getParameter("count");
+			String comm = request.getParameter("comm1");
+			System.out.println("個数"+count);
+			System.out.println("商品番号"+comm);
 			PreparedStatement st = con.prepareStatement(
 					"update comm_table set count=? where comm_id=?");
 			
 			st.setString(1, count);
-			st.setInt(2, 2);
+			st.setString(2, comm);
 			
 			st.executeUpdate();
 			
 			
 			st.close();
 			con.close();
+			response.sendRedirect("http://localhost:8080/R03Team06/list");
 			} catch (Exception e) {
 				out.println("<pre>");
 				e.printStackTrace(out);

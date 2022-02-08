@@ -39,7 +39,7 @@ public class listServlet extends HttpServlet {
 					"java:/comp/env/jdbc/webapp");
 			Connection con = ds.getConnection();
 			PreparedStatement st = con.prepareStatement(
-					"insert ignore into user_table values(null,2,?)");
+					"insert ignore into user_table values(null,?)");
 			st.setString(1,  email);
 			st.executeUpdate();
 			st.close();

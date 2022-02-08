@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-//データベース追加用サーブレット
-
+//買い物リストから商品を削除
 @WebServlet("/delete")
 
 public class delete extends HttpServlet {
