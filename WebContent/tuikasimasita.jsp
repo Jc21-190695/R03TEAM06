@@ -1,28 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" pageEncoding="utf-8"
+	contentType="text/html; charset=Windows-31J"%>
+<%
+String url = "http://localhost:8080/R03Team06/list";
+int timer = 5;
+%>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-    
-	 追加しました。
-	 <input name="counter" type="text" size="10">
-	 <script>
-    setTimeout(function(){
-  window.location.href = 'http://localhost:8080/R03Team06/list';
-}, 5*1000);
-    <!--
-    count = 0; //カウントの初期値
-    timerID = setInterval('countup()',1000); //1秒毎にcountup()を呼び出し
+<meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS">
+<meta http-equiv="refresh" content="<%=timer%>;URL=<%=url%>">
+<script language="JavaScript">
+	num =
+<%=timer%>
+	+ 1;
+	function countdown(counter) {
+		if (counter < 1) {
+			return;
+		}
+		counter--;
+		num = counter;
+		document.getElementById("SET_COUNT").innerHTML = counter;
+		setTimeout("countdown(num)", 1000);
+	}
+	
 
-    function countup() {
-    	count++;
-    	document.form_count.counter.value = count;
-    }
-    -->
-	</script>
+</script>
+</head>
+<body onLoad="countdown(num)" style="text-align: center">
+	追加しました
+	<br>
+	<br>
+	<span><DIV id="SET_COUNT" ><%=timer%></DIV>秒後に自動的にジャンプします・・・</span>
+	<br>
+	追加購入画面へ
+	<br>
+	<button type=“button” onclick="location.href='http://localhost:8080/R03Team06/tuika.jsp'">ページリンク</button>
+
 </body>
 </html>
